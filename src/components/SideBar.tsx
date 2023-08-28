@@ -19,13 +19,19 @@ export default function SideBar({
   return (
     <>
       {sideBarMenu === false ? (
-        <HamburgerIcon boxSize={6} onClick={() => setSideBarMenu(true)} />
+        <HamburgerIcon boxSize={6} onClick={() => {
+            setSideBarMenu(true);
+            document.body.style.overflowY = "hidden";
+          }} />
       ) : (
         <Box padding={5} className="sidebar">
           <HamburgerIcon
             boxSize={6}
             marginBottom={5}
-            onClick={() => setSideBarMenu(false)}
+            onClick={() => {
+              setSideBarMenu(false);
+              document.body.style.overflowY = "visible";
+            }}
           />
           <GameGenreList
             selectedGenre={gameQuery.genre}
